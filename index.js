@@ -2,7 +2,9 @@ import express from "express"
 import "dotenv/config"
 import cors from "cors"
 import {conectarDB} from"./database/conectarDB.js";
-import { getProducto } from "./controllers/getProducto.js";
+import { getProductos } from "./controllers/getProductos.js";
+import { mostrarDatosRequest } from "./middlewares/mostrarDatosRequest.js";
+import { manejadorErrores } from "./middlewares/manejadorErrores.js";
 import { postProducto } from "./controllers/postProducto.js";
 
 const app = express();
@@ -14,11 +16,15 @@ await conectarDB();
 
 const port=process.env.PORT;
 
+//middleware -> mostrar data requests
+app.use(mostrarDatosRequest);
+
+//rutas
 app.get("/",(req,res)=>{
     res.send("Hello World 22!")
 })
 
-app.get("/productos", getProducto)
+app.get("/productos", getProductos)
 
 // middleware manejador de errores
 app.use(manejadorErrores);

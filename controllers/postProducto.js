@@ -1,5 +1,5 @@
-import { ModeloProducto } from "../database/models/ModeloProducto";
-import { obtenerProximoId } from "../utils/functions";
+import { ModeloProducto } from "../database/models/ModeloProducto.js";
+import { obtenerProximoId } from "../utils/functions.js";
 
 export const postProducto= async(req, res, next)=>{
     const {

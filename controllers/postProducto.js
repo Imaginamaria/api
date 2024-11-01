@@ -16,7 +16,9 @@ export const postProducto= async(req, res, next)=>{
         advertencias,
         recomendaciones,
         calculadora,
-        lineaterapeutica
+        lineaterapeutica,
+        marca,
+        precio
     } = req.body;
     const nuevoProducto = new ModeloProducto();
     nuevoProducto.id = await obtenerProximoId(ModeloProducto);

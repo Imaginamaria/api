@@ -12,13 +12,15 @@ const schemaProducto = new Schema({
     composicion: String,
     tiempos: String,
     especies: String,
-    presentacion: String,
+    presentacion: Array,
     registro: String,
     imagen: String,
     advertencias: String,
     recomendaciones: String,
-    calculadora: String,
-    lineaterapeutica: String
+    calculadora: { type: Number },
+    lineaterapeutica: String,
+    marca: String,
+    precio: { type: Number } 
 })
 
 //crear el modelo

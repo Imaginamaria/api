@@ -27,13 +27,16 @@ export const postProducto= async(req, res, next)=>{
     nuevoProducto.composicion = composicion;
     nuevoProducto.tiempos = tiempos;
     nuevoProducto.especies = especies;
-    nuevoProducto.presentacion = presentacion;
+    //asegurarme de que siempre sea un array (en caso de que req.body.presentacion pueda venir vacío o con un solo valor)
+    nuevoProducto.presentacion = Array.isArray(presentacion) ? presentacion : [presentacion];
     nuevoProducto.registro = registro;
     nuevoProducto.imagen = imagen;
     nuevoProducto.advertencias = advertencias;
     nuevoProducto.recomendaciones = recomendaciones;
     nuevoProducto.calculadora = calculadora;
     nuevoProducto.lineaterapeutica = lineaterapeutica;
+    nuevoProducto.marca = marca;
+    nuevoProducto.precio = precio;
     
     nuevoProducto.save()
     .then((data)=>{

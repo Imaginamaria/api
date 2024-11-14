@@ -9,6 +9,10 @@ import { manejadorErrores } from "./middlewares/manejadorErrores.js";
 import { postProducto } from "./controllers/postProducto.js";
 import { deleteProducto } from "./controllers/deleteProducto.js";
 import { putProducto } from "./controllers/putProducto.js";
+import { postUsuario } from "./controllers/postUsuario.js";
+import { loginUsuario } from "./controllers/loginUsuario.js";
+import { controlarSesion } from "./middlewares/controlarSesion.js";
+import { logoutUsuario } from "./controllers/logoutUsuario.js";
 
 const app = express();
 app.use(express.json());
@@ -24,8 +28,20 @@ app.use(mostrarDatosRequest);
 
 //rutas
 app.get("/",(req,res)=>{
-    res.send("Hello World 22!")
+    res.send("Api de Laboratorios Pasteur!")
 })
+
+// rutas de usuarios
+// post -> registrar usuario
+app.post("/registrar", postUsuario);
+// post -> login usuario
+app.post("/login", loginUsuario);
+
+// lo pongo por debajo del register y login para que no entre en conflicto
+app.use(controlarSesion);
+
+// lo pongo por debajo del register y login para que no entre en conflicto
+app.post("/logout", logoutUsuario);
 
 app.get("/productos", getProductos);
 app.get("/productos/:id", getProductoById);

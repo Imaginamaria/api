@@ -1,7 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import cors from "cors";
-import {conectarDB} from"./database/conectarDB.js";
+import { conectarDB } from"./database/conectarDB.js";
 import { getProductos } from "./controllers/getProductos.js";
 import { getProductoById } from "./controllers/getProductoById.js";
 import { mostrarDatosRequest } from "./middlewares/mostrarDatosRequest.js";
@@ -14,11 +14,14 @@ import { loginUsuario } from "./controllers/loginUsuario.js";
 import { controlarSesion } from "./middlewares/controlarSesion.js";
 import { logoutUsuario } from "./controllers/logoutUsuario.js";
 
+// creamos la app de express
 const app = express();
+// usamos express.json para poder leer el body de las peticiones
 app.use(express.json());
+// habilitamos cors para poder hacer peticiones desde el frontend
 app.use(cors());
 
-
+// conectamos a la base de datos
 await conectarDB();
 
 const port=process.env.PORT;
@@ -38,7 +41,7 @@ app.post("/registrar", postUsuario);
 app.post("/login", loginUsuario);
 
 // lo pongo por debajo del register y login para que no entre en conflicto
-app.use(controlarSesion);
+//app.use(controlarSesion);
 
 // lo pongo por debajo del register y login para que no entre en conflicto
 app.post("/logout", logoutUsuario);

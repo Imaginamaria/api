@@ -8,6 +8,7 @@ const schemaUsuario = new Schema({
     email:{type: String, unique:true},
     password: String,
     localidad: String,
+    departamento: String,
     telefono: String,
     veterinaria: String,
     session: String,

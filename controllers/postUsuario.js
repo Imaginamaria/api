@@ -10,6 +10,7 @@ export const postUsuario = async (req, res, next) => {
         email,
         password,
         localidad,
+        departamento,
         telefono,
         veterinaria,
         session
@@ -33,6 +34,7 @@ export const postUsuario = async (req, res, next) => {
         nuevoUsuario.email = email;
         nuevoUsuario.password = password;
         nuevoUsuario.localidad = localidad;
+        nuevoUsuario.departamento = departamento;
         nuevoUsuario.telefono = telefono;
         nuevoUsuario.veterinaria = veterinaria;
 

@@ -20,7 +20,8 @@ const schemaProducto = new Schema({
     calculadora: { type: Number },
     lineaterapeutica: String,
     marca: String,
-    precio: { type: Number } 
+    precio: { type: Number } ,
+    zafra: Array
 })
 
 //crear el modelo

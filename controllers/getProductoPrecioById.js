@@ -3,12 +3,12 @@ import { ModeloProducto } from "../database/models/ModeloProducto.js";
 
 //controlador para obtener un producto por su id
 
-export const getProductoById =  (req, res, next) => {
+export const getProductoPrecioById =  (req, res, next) => {
     // obtengo el id de la url
     const idProducto = req.params.id;
 
 
-    ModeloProducto.findOne({id: idProducto}, "-precio")
+    ModeloProducto.findOne({id: idProducto})
     .then((data)=>{
         //si no hay producto con ese id tiro un error que ser'a capturado por el catch
         if(!data){

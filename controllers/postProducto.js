@@ -18,7 +18,8 @@ export const postProducto= async(req, res, next)=>{
         calculadora,
         lineaterapeutica,
         marca,
-        precio
+        precio,
+        zafra
     } = req.body;
     const nuevoProducto = new ModeloProducto();
     nuevoProducto.id = await obtenerProximoId(ModeloProducto);
@@ -39,6 +40,7 @@ export const postProducto= async(req, res, next)=>{
     nuevoProducto.lineaterapeutica = lineaterapeutica;
     nuevoProducto.marca = marca;
     nuevoProducto.precio = precio;
+    nuevoProducto.zafra = Array.isArray(zafra) ? zafra : [zafra]
     
     nuevoProducto.save()
     .then((data)=>{

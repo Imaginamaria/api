@@ -39,15 +39,18 @@ app.get("/",(req,res)=>{
 app.post("/registrar", postUsuario);
 // post -> login usuario
 app.post("/login", loginUsuario);
+app.get("/productos",getProductos);
+app.get("/productos/:id", getProductoById);
 
 // lo pongo por debajo del register y login para que no entre en conflicto
-//app.use(controlarSesion);
+// app.use(controlarSesion);
 
 // lo pongo por debajo del register y login para que no entre en conflicto
 app.post("/logout", logoutUsuario);
 
-app.get("/productos", getProductos);
-app.get("/productos/:id", getProductoById);
+app.get("/productosConPrecio", getProductos);
+app.get("/productosConPrecio/:id", getProductoById);
+
 app.post("/producto", postProducto);
 app.delete("/producto/:id", deleteProducto);
 app.put("/producto/:id", putProducto);

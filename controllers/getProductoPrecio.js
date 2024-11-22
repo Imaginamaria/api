@@ -3,7 +3,7 @@ import { formatearFiltrosDB } from "../utils/functions.js";
 
 // controlador para obtener todos los productos
 
-export const getProductos=(req, res, next) =>{
+export const getProductosPrecio=(req, res, next) =>{
 
     const filtroMarca = formatearFiltrosDB(req.query.marca);
     const filtroEspecies = formatearFiltrosDB(req.query.especies);
@@ -33,7 +33,7 @@ export const getProductos=(req, res, next) =>{
     //    next(error);
     //});
 
-    ModeloProducto.find({}, "-precio")
+    ModeloProducto.find()
     .then((data)=>{
         //si no hay producto devuelvo vacio
         if(data.length === 0){

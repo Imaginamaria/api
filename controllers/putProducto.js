@@ -24,7 +24,8 @@ export const putProducto = (req, res, next) => {
         calculadora,
         lineaterapeutica,
         marca,
-        precio
+        precio,
+        zafra
     } = req.body;
     
     const datosNuevos = {};
@@ -45,9 +46,9 @@ export const putProducto = (req, res, next) => {
     if(lineaterapeutica) datosNuevos.lineaterapeutica = lineaterapeutica;
     if(marca) datosNuevos.marca = marca;
     if(precio) datosNuevos.precio = precio;
+    if(zafra) datosNuevos.zafra = zafra;
 
     //modifico el producto con el id proporcionado
-
     ModeloProducto.updateOne({id: idProducto}, datosNuevos)
     .then((data) =>{
         if(data.matchedCount === 0){

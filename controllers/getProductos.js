@@ -33,7 +33,7 @@ export const getProductos=(req, res, next) =>{
     //    next(error);
     //});
 
-    ModeloProducto.find({}, "-precio")
+    ModeloProducto.find(filtros, "-precio")
     .then((data)=>{
         //si no hay producto devuelvo vacio
         if(data.length === 0){

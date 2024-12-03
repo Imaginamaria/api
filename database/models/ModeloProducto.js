@@ -11,7 +11,7 @@ const schemaProducto = new Schema({
     dosificacion: String,
     composicion: String,
     tiempos: String,
-    especies: String,
+    especies: [String],
     presentacion: Array,
     registro: String,
     imagen: String,

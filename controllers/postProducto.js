@@ -29,7 +29,7 @@ export const postProducto= async(req, res, next)=>{
     nuevoProducto.dosificacion = dosificacion;
     nuevoProducto.composicion = composicion;
     nuevoProducto.tiempos = tiempos;
-    nuevoProducto.especies = especies;
+    nuevoProducto.especies = Array.isArray(especies) ? especies : [especies];
     //asegurarme de que siempre sea un array (en caso de que req.body.presentacion pueda venir vacío o con un solo valor)
     nuevoProducto.presentacion = Array.isArray(presentacion) ? presentacion : [presentacion];
     nuevoProducto.registro = registro;

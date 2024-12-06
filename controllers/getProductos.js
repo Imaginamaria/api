@@ -34,6 +34,7 @@ export const getProductos=(req, res, next) =>{
     //});
 
     ModeloProducto.find(filtros, "-precio")
+    .sort({nombre:'asc'}) //ascendent y descendent ordenar alfabeticamente, precio de menor a mayor, etc
     .then((data)=>{
         //si no hay producto devuelvo vacio
         if(data.length === 0){

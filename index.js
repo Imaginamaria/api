@@ -4,6 +4,7 @@ import cors from "cors";
 import { conectarDB } from"./database/conectarDB.js";
 import { getProductos } from "./controllers/getProductos.js";
 import { getProductoById } from "./controllers/getProductoById.js";
+import { getProductosRelacionados } from "./controllers/getProductos.js"; // Asegúrate de importar el nuevo controlador
 import { mostrarDatosRequest } from "./middlewares/mostrarDatosRequest.js";
 import { manejadorErrores } from "./middlewares/manejadorErrores.js";
 import { postProducto } from "./controllers/postProducto.js";
@@ -41,6 +42,7 @@ app.post("/registrar", postUsuario);
 app.post("/login", loginUsuario);
 app.get("/productos",getProductos);
 app.get("/productos/:id", getProductoById);
+app.get("/productos/relacionados", getProductosRelacionados); // Ruta para obtener productos relacionados
 
 // lo pongo por debajo del register y login para que no entre en conflicto
 // app.use(controlarSesion);

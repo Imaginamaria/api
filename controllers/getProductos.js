@@ -18,20 +18,6 @@ export const getProductos=(req, res, next) =>{
     if(filtroMarca) filtros.marca = filtroMarca;
     if(filtroNombre) filtros.nombre = filtroNombre;
 
-    //buscamos los productos en la base de datos primera duda como hago para
-    //tener ambas opciones, listar con y sin filtros
-    //chat gpt me sugiere verificar si es la manera o hay otra
-    //    // Si no hay ningún filtro, traerá todas las noticias
-    //ModeloNoticia.find(Object.keys(filtros).length ? filtros : {})
-    //.then((data) => {
-    //    console.log("get productos =>", data);
-        // Devolvemos las noticias en formato JSON
-    //    res.json(data.length ? data : []);
-    //})
-    //.catch((error) => {
-        // Si hay un error, lo pasamos al siguiente middleware
-    //    next(error);
-    //});
 
     ModeloProducto.find(filtros, "-precio")
     .sort({nombre:'asc'}) //ascendent y descendent ordenar alfabeticamente, precio de menor a mayor, etc
@@ -50,6 +36,24 @@ export const getProductos=(req, res, next) =>{
         //si hay error podemos usar el middleware ( que hay que definirlo antes) o simplemente mensahe de error)
 
         res.SEND("Hubo un error")
-    })
+    });
 
-}
+};
+
+// Controlador para obtener productos relacionados por línea terapéutica
+export const getProductosRelacionados = (req, res, next) => {
+    const { lineaTerapeutica } = req.query; // Obtener la línea terapéutica del query
+
+    if (!lineaTerapeutica) {
+        return res.status.send("Línea terapéutica es requerida");
+    }
+
+    ModeloProducto.find({ lineaterapeutica: lineaTerapeutica })
+        .limit(4) // Limitar a 4 productos
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((error) => {
+            res.status.send("Hubo un error al obtener productos relacionados");
+        });
+};

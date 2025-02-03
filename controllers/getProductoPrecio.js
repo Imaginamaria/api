@@ -48,7 +48,7 @@ export const getProductosPrecio=(req, res, next) =>{
     .catch((error)=>{
         //si hay error podemos usar el middleware ( que hay que definirlo antes) o simplemente mensahe de error)
 
-        res.SEND("Hubo un error")
+        res.send("Hubo un error")
     })
 
 }

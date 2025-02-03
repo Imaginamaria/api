@@ -35,7 +35,7 @@ export const getProductos=(req, res, next) =>{
     .catch((error)=>{
         //si hay error podemos usar el middleware ( que hay que definirlo antes) o simplemente mensahe de error)
 
-        res.SEND("Hubo un error")
+        res.send("Hubo un error")
     });
 
 };
@@ -45,7 +45,7 @@ export const getProductosRelacionados = (req, res, next) => {
     const { lineaTerapeutica } = req.query; // Obtener la línea terapéutica del query
 
     if (!lineaTerapeutica) {
-        return res.status.send("Línea terapéutica es requerida");
+        return res.status(400).send("Línea terapéutica es requerida");
     }
 
     ModeloProducto.find({ lineaterapeutica: lineaTerapeutica })
@@ -54,6 +54,8 @@ export const getProductosRelacionados = (req, res, next) => {
             res.json(data);
         })
         .catch((error) => {
-            res.status.send("Hubo un error al obtener productos relacionados");
+            res.status(500).send("Hubo un error al obtener productos relacionados");
+
+            //res.status.send("Hubo un error al obtener productos relacionados");
         });
 };

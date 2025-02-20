@@ -18,7 +18,7 @@ const schemaProducto = new Schema({
     advertencias: String,
     recomendaciones: String,
     calculadora: { type: Number },
-    lineaterapeutica: String,
+    lineaterapeutica: Array,
     marca: String,
     precio: { type: Number } ,
     zafra: [Number]

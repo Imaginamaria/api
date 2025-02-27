@@ -11,8 +11,8 @@ const schemaArticulo = new Schema({
     detalle: String,
     fecha: String,
     imagen: String,
-    temas: Array,
-    especies: Array
+    temas: [String],
+    especies: [String],
 })
 
 //crear el modelo

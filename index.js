@@ -14,6 +14,11 @@ import { postUsuario } from "./controllers/postUsuario.js";
 import { loginUsuario } from "./controllers/loginUsuario.js";
 import { controlarSesion } from "./middlewares/controlarSesion.js";
 import { logoutUsuario } from "./controllers/logoutUsuario.js";
+import { getArticulos } from "./controllers/getArticulos.js";
+import { getArticuloById } from "./controllers/getArticuloById.js";
+import { postArticulo } from "./controllers/postArticulo.js";
+import { putArticulo } from "./controllers/putArticulo.js";
+import { deleteArticulo } from "./controllers/deleteArticulo.js";
 
 // creamos la app de express
 const app = express();
@@ -47,6 +52,10 @@ app.post("/registrar", postUsuario);
 app.post("/login", loginUsuario);
 app.get("/productos",getProductos);
 app.get("/productos/:id", getProductoById);
+
+app.get("/articulos", getArticulos);
+app.get("/articulos/:id", getArticuloById);
+
 app.get("/productos/relacionados", getProductosRelacionados); // Ruta para obtener productos relacionados
 
 // lo pongo por debajo del register y login para que no entre en conflicto
@@ -61,6 +70,12 @@ app.get("/productosConPrecio/:id", getProductoById);
 app.post("/producto", postProducto);
 app.delete("/producto/:id", deleteProducto);
 app.put("/producto/:id", putProducto);
+
+
+
+app.post("/articulo", postArticulo);
+app.delete("/articulo/:id", deleteArticulo);
+app.put("/articulo/:id", putArticulo);
 
 // middleware manejador de errores
 app.use(manejadorErrores);

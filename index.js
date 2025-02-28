@@ -1,7 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import cors from "cors";
-import { conectarDB } from"./database/conectarDB.js";
+import { conectarDB } from "./database/conectarDB.js";
 import { getProductos } from "./controllers/getProductos.js";
 import { getProductoById } from "./controllers/getProductoById.js";
 import { getProductosRelacionados } from "./controllers/getProductos.js"; // Asegúrate de importar el nuevo controlador
@@ -56,7 +56,7 @@ app.get("/productos/:id", getProductoById);
 app.get("/articulos", getArticulos);
 app.get("/articulos/:id", getArticuloById);
 
-app.get("/productos/relacionados", getProductosRelacionados); // Ruta para obtener productos relacionados
+//app.get("/productos/relacionados", getProductosRelacionados); // Ruta para obtener productos relacionados
 
 // lo pongo por debajo del register y login para que no entre en conflicto
 // app.use(controlarSesion);

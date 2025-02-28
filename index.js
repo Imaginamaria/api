@@ -27,10 +27,12 @@ app.use(express.json());
 // habilitamos cors para poder hacer peticiones desde el frontend
 //app.use(cors());
 app.use(cors({
-    origin: "*", // Permite todas las solicitudes (en producción, cambiar por el dominio correcto)
+    origin: "*",
     methods: "GET, POST, PUT, DELETE",
-    allowedHeaders: "Content-Type, Authorization"
+    allowedHeaders: "Content-Type, Authorization",
+    preflightContinue: true // Esto puede ayudar con problemas de preflight requests
 }));
+
 
 // conectamos a la base de datos
 await conectarDB();

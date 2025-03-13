@@ -23,9 +23,10 @@ export const postArticulo= async(req, res, next)=>{
     nuevoArticulo.detalle = detalle;
     nuevoArticulo.fecha = fecha;
     nuevoArticulo.imagen = imagen;
+    nuevoArticulo.temas = Array.isArray(temas) ? temas : [temas];
     nuevoArticulo.especie = Array.isArray(especie) ? especie : [especie];
     //asegurarme de que siempre sea un array (en caso de que req.body.temas pueda venir vacío o con un solo valor)
-    nuevoArticulo.temas = Array.isArray(temas) ? temas : [temas];
+    
     
     nuevoArticulo.save()
     .then((data)=>{

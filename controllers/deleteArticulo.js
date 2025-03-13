@@ -12,7 +12,7 @@ export  const deleteArticulo = (req, res, next) =>{
     .then((data)=>{
         // si no hay articulo con ese id tiro un error que será capturado por el catch
         if(data.deletedCount !== 1){
-            throw new Error (`No existe producto con el Id ${idArticulo}`)
+            throw new Error (`No existe articulo con el Id ${idArticulo}`)
         }else{
             // si tengo articulo lo devolvemos en formato json
             res.json({

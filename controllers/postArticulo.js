@@ -1,5 +1,5 @@
-import {ModeloArticulo} from "../database/models/ModeloArticulo.js"
-import { formatearFiltrosDB } from "../utils/functions.js";
+import {ModeloArticulo} from "../database/models/ModeloArticulo.js";
+import { obtenerProximoId } from "../utils/functions.js";
 
 
 export const postArticulo= async(req, res, next)=>{

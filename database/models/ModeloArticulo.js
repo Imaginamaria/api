@@ -1,3 +1,4 @@
+import { link } from "fs";
 import {Schema, model} from "mongoose";
 
 //definir el esquema de la coleccion de articulos
@@ -13,6 +14,7 @@ const schemaArticulo = new Schema({
     imagen: String,
     temas: [String],
     especie: [String],
+    link: [String],
 })
 
 //crear el modelo
